@@ -1,0 +1,17 @@
+class Solution:
+    def removeOccurrences(self, s: str, part: str) -> str:
+        changesMade = True
+        strLen = len(part)
+        while changesMade:
+            changesMade = False
+            stack = []
+            i = 0
+            while i < len(s):
+                if s[i:i+strLen] == part:
+                    changesMade = True
+                    i += strLen  # Skip the part substring
+                else:
+                    stack.append(s[i])
+                    i += 1
+            s = "".join(stack)
+        return s
